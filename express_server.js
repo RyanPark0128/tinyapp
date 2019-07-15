@@ -38,6 +38,7 @@ const users = {
     password: "hihi"
   }
 };
+
 app.get("/urls", (req, res) => {
   if (req.session.id === "" || req.session.id === false) {
     res.redirect("/login");
@@ -145,7 +146,7 @@ app.post("/register", (req,res) => {
   if (email === "") {
     res.send("enter correct email address");
   }
-  if (emailMatch(email)) {
+  if (emailMatch(email, users)) {
     res.send("400 Status Code: Fail to Register (email alreay exists)");
   } else {
     users[id] = {
@@ -153,8 +154,8 @@ app.post("/register", (req,res) => {
       email: email,
       password: password
     };
+    res.redirect("/urls");
   }
-  res.redirect("/urls");
 });
 
 app.listen(PORT, () => {

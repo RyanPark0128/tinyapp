@@ -12,7 +12,7 @@ function urlsForUser(id, urlDatabase) {
     let urlsOfUser = {}
     for (const shortURL in urlDatabase) {
         if (urlDatabase[shortURL].userID === id) {
-            urlsOfUser[shortURL] = urlDatabase[shortURL]
+            urlsOfUser[shortURL] = urlDatabase[shortURL];
       }
     }
     return urlsOfUser
@@ -27,9 +27,9 @@ function longin(email, password, users) {
     return null
 }
 
-function emailMatch(email) {
-    for (const key in users) {
-        if (email === users[key].email) {
+function emailMatch(email, user) {
+    for (const key in user) {
+        if (email === user[key].email) {
             return true
         }
     }
